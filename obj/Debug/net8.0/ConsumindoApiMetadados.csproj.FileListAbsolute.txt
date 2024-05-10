@@ -15,3 +15,4 @@ C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadad
 C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.pdb
 C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.genruntimeconfig.cache
 C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ref\ConsumindoApiMetadados.dll
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.sourcelink.json

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsumindoApiMetadados")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22994313c737073b4be680296cb0a2483c4c5473")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsumindoApiMetadados")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsumindoApiMetadados")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

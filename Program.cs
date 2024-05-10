@@ -24,7 +24,20 @@ foreach (var item in jsonData)
 dynamic pessoaId = await PessoaService.PostCadastroPreAdmissao(jsonData);
 
 Console.WriteLine("ID do Usuario Cadastrado");
-Console.WriteLine(pessoaId);
+if (pessoaId != null)
+{
+    Console.WriteLine(pessoaId);
+}
+else
+{
+    Console.WriteLine("O retorno do POST foi nulo. Verificar.");
+}
+
+Console.WriteLine("-----------------FIM----------------");
+Console.WriteLine("------------------------------------");
+
+
+
 
 
 
