@@ -1,0 +1,17 @@
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.AssemblyInfoInputs.cache
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.AssemblyInfo.cs
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.csproj.CoreCompileInputs.cache
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\bin\Debug\net8.0\ConsumindoApiMetadados.exe
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\bin\Debug\net8.0\ConsumindoApiMetadados.deps.json
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\bin\Debug\net8.0\ConsumindoApiMetadados.runtimeconfig.json
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\bin\Debug\net8.0\ConsumindoApiMetadados.dll
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\bin\Debug\net8.0\ConsumindoApiMetadados.pdb
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.csproj.AssemblyReference.cache
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\Consumin.EEA1EFF0.Up2Date
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.dll
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\refint\ConsumindoApiMetadados.dll
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.pdb
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ConsumindoApiMetadados.genruntimeconfig.cache
+C:\Users\SRodriguesmt03\source\repos\ConsumindoApiMetadados\ConsumindoApiMetadados\obj\Debug\net8.0\ref\ConsumindoApiMetadados.dll
