@@ -25,7 +25,6 @@ dynamic pessoaId = await PessoaService.PostCadastroPreAdmissao(jsonData);
 
 Console.WriteLine("ID do Usuario Cadastrado");
 Console.WriteLine(pessoaId);
-Console.WriteLine("Esperar");
 
 
 
