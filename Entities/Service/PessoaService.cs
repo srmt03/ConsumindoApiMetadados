@@ -125,6 +125,8 @@ namespace ConsumindoApiMetadados.Entities.Service
             }
         }
 
+
+        //Refatoracao torna funcao abaixo desnecessaria
         //private static async Task<dynamic> PostRequisicaoComParametro(dynamic _pessoa, string _url, string _token)
         //{
         //    try
