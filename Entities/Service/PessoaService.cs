@@ -15,7 +15,7 @@ namespace ConsumindoApiMetadados.Entities.Service
         private const string email = "avaliacao.api@metadados.com.br";
         private const string senha = "Aval@123";
 
-        private static async Task<string> GetToken(string username, string password)
+        private static async Task<string> GetToken(string email, string senha)
         {
             try
             {
@@ -29,10 +29,10 @@ namespace ConsumindoApiMetadados.Entities.Service
 
                     var tokenObject = await response.Content.ReadAsStringAsync();
 
-                    var document = JsonDocument.Parse(tokenObject);
-                    var root = document.RootElement;
+                    var documentToken = JsonDocument.Parse(tokenObject);
+                    var rootToken = documentToken.RootElement;
                     
-                    string token = root.GetProperty("accessToken").GetString();
+                    string token = rootToken.GetProperty("accessToken").GetString();
 
                     return token;
 
@@ -50,8 +50,9 @@ namespace ConsumindoApiMetadados.Entities.Service
             string _token = await GetToken(email, senha);
             string _endpoint = "/cadastro/preAdmissao";
             string _url = API_URL + _endpoint;
+            string _method = "GET";
 
-            dynamic pessoa = await GetRequisicaoComParametro(_cpf, _url, _token);
+            dynamic pessoa = await Requisicao(_url, _token, _method, _cpf);
 
             return pessoa;
         }
@@ -61,26 +62,45 @@ namespace ConsumindoApiMetadados.Entities.Service
             string _token = await GetToken(email, senha);
             string _endpoint = "/cadastro/preAdmissao";
             string _url = API_URL + _endpoint;
+            string _method = "POST";
 
-            dynamic id = await PostRequisicaoComParametro(_bodyResponseObject, _url, _token);
+            dynamic id = await Requisicao(_url, _token, _method, _bodyResponseObject);
 
             return id;
         }
 
-        private static async Task<dynamic> GetRequisicaoComParametro(string _queryParams, string _endpoint, string _token)
+        private static async Task<dynamic> Requisicao(string _url, string _token, string _method, string _queryParams = null, dynamic _pessoa = null)
         {
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var _uriBuilder = new UriBuilder(_endpoint);
-                    var _query = System.Web.HttpUtility.ParseQueryString(_uriBuilder.Query);
-                    _query["cpf"] = _queryParams;
-                    _uriBuilder.Query = _query.ToString();
-                    string _urlWithParams = _uriBuilder.ToString();
-                    
-                    var request = new HttpRequestMessage(HttpMethod.Get, _urlWithParams);
+                    string _requestUri;
+                    string method = _method.ToString();
+                    var _uriBuilder = new UriBuilder(_url);
+                    var request = new HttpRequestMessage();
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+                    StringContent _bodyContent;
+
+                    if (_method == "GET")
+                    {
+                        var _query = System.Web.HttpUtility.ParseQueryString(_uriBuilder.Query);
+                        _query["cpf"] = _queryParams;
+                        _uriBuilder.Query = _query.ToString();
+                        _requestUri = _uriBuilder.ToString();
+                        request.Method = HttpMethod.Get;
+                    }                                        
+                    else //POST
+                    {
+                        string _json = JsonConvert.SerializeObject(new { pessoa = _pessoa });
+                        _bodyContent = new StringContent(_json, Encoding.UTF8, "application/json");
+                        request.Content = _bodyContent;
+                        //request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                        _requestUri = _url;
+                        request.Method = HttpMethod.Post;
+                    }
+
+                    request = new HttpRequestMessage(request.Method, _requestUri);
 
                     var response = await client.SendAsync(request);
                    
@@ -92,9 +112,9 @@ namespace ConsumindoApiMetadados.Entities.Service
                     else
                     {
                         var responseBody = await response.Content.ReadAsStringAsync();
-                        dynamic jsonObejectPessoa = JsonConvert.DeserializeObject<dynamic>(responseBody);
-                        Console.WriteLine(jsonObejectPessoa);
-                        return jsonObejectPessoa;
+                        dynamic jsonObejectReturn = JsonConvert.DeserializeObject<dynamic>(responseBody);
+                        Console.WriteLine(jsonObejectReturn);
+                        return jsonObejectReturn;
                     }                                                         
                 }                    
             }
@@ -105,42 +125,42 @@ namespace ConsumindoApiMetadados.Entities.Service
             }
         }
 
-        private static async Task<dynamic> PostRequisicaoComParametro(dynamic _pessoa, string _url, string _token)
-        {
-            try
-            {
-                using (var client = new HttpClient())
-                {                    
-                    string json = JsonConvert.SerializeObject(new { pessoa = _pessoa});
+        //private static async Task<dynamic> PostRequisicaoComParametro(dynamic _pessoa, string _url, string _token)
+        //{
+        //    try
+        //    {
+        //        using (var client = new HttpClient())
+        //        {                    
+        //            string json = JsonConvert.SerializeObject(new { pessoa = _pessoa });
                                         
-                    var bodyContent = new StringContent(json, Encoding.UTF8, "application/json");
+        //            var bodyContent = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    var request = new HttpRequestMessage(HttpMethod.Post, $"{_url}");
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _token);
-                    request.Content = bodyContent;
-                    request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        //            var request = new HttpRequestMessage(HttpMethod.Post, $"{_url}");
+        //            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+        //            request.Content = bodyContent;
+        //            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                    var response = await client.SendAsync(request);
+        //            var response = await client.SendAsync(request);
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine($"Erro na requisição: {response.StatusCode}");
-                        return null;
-                    }
-                    else
-                    {
-                        var responseBody = await response.Content.ReadAsStringAsync();
-                        dynamic idPessoa = JsonConvert.DeserializeObject<dynamic>(responseBody);
-                        Console.WriteLine(idPessoa);
-                        return idPessoa;
-                    }
-                }
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine($"Erro na requisição: {e.Message}");
-                return null;
-            }
-        }
+        //            if (!response.IsSuccessStatusCode)
+        //            {
+        //                Console.WriteLine($"Erro na requisição: {response.StatusCode}");
+        //                return null;
+        //            }
+        //            else
+        //            {
+        //                var responseBody = await response.Content.ReadAsStringAsync();
+        //                dynamic idPessoa = JsonConvert.DeserializeObject<dynamic>(responseBody);
+        //                Console.WriteLine(idPessoa);
+        //                return idPessoa;
+        //            }
+        //        }
+        //    }
+        //    catch (HttpRequestException e)
+        //    {
+        //        Console.WriteLine($"Erro na requisição: {e.Message}");
+        //        return null;
+        //    }
+        //}
     }
 }
